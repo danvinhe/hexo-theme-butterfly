@@ -16,6 +16,13 @@ mixin articleSort(posts)
             else
               div(style=`background: ${article.cover}`)
         .article-sort-item-info
+          - let author = article.copyright_author || config.author
+          - let authorHref = article.copyright_author_href || theme.post_copyright.author_href || config.url
+          if (theme.post_meta.list.author && author.length > 0 && authorHref.length > 0)
+            .article-sort-item-time
+              i.fa-regular.fa-copyright
+              span.article-meta-label=' '
+              a(href=url_for(authorHref)).article-meta__categories #[=author]
           .article-sort-item-time
             i.far.fa-calendar-alt
             time.post-meta-date-created(datetime=date_xml(article.date) title=_p('post.created') + ' ' + full_date(article.date))= date(article.date, config.date_format)
