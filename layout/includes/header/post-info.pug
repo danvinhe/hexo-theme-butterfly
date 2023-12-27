@@ -4,9 +4,17 @@
     if theme.post_edit.enable
       a.post-edit-link(href=theme.post_edit.url + page.source title=_p('post.edit') target="_blank")
         i.fas.fa-pencil-alt
-        
+
   #post-meta
     .meta-firstline
+      - let author = page.copyright_author || config.author
+      - let authorHref = page.copyright_author_href || theme.post_copyright.author_href || config.url
+      if (theme.post_meta.post.author && author.length > 0 && authorHref.length > 0)
+        span.post-meta-date
+          i.fa-regular.fa-copyright.fa-fw.post-meta-icon
+          span.post-meta-label=_p('copy_copyright.author')
+          a(href=url_for(authorHref)).post-meta__categories #[=author]
+          span.post-meta-separator |
       if (theme.post_meta.post.date_type)
         span.post-meta-date
           if (theme.post_meta.post.date_type === 'both')
@@ -51,7 +59,7 @@
             i.far.fa-clock.fa-fw.post-meta-icon
             span.post-meta-label= _p('post.min2read') + ':'
             span= min2read(page.content, {cn: 350, en: 160}) + _p('post.min2read_unit')
-    
+
       //- for pv and count
       mixin pvBlock(parent_id,parent_class,parent_title)
         span.post-meta-separator |
@@ -98,7 +106,7 @@
             span.post-meta-label= _p('post.comments') + ':'
             if block
               block
-        
+
         case whichCount
           when 'Disqus'
             +countBlock
