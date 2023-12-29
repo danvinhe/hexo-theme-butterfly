@@ -10,5 +10,8 @@ block content
     include ./includes/mixins/article-sort.pug
     #category
       .article-sort-title!= _p('page.category') + ' : ' + parent_categories() + page.category
+      - let children = children_categories()
+      if (children.length)
+        .article-sort-subtitle!= _p('page.subcategory') + ' : ' + children
       +articleSort(page.posts)
       include includes/pagination.pug

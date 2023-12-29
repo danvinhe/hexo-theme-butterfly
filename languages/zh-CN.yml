@@ -12,6 +12,7 @@ page:
   tag: 标签
   category: 分类
   archives: 归档
+  subcategory: 子类
 
 card_post_count: 条评论
 

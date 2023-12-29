@@ -107,3 +107,42 @@
     &-info
       flex: 1
       padding: 0 16px
+
+  &-subtitle
+    position: relative
+    margin-left: 10px
+    padding-bottom: 20px
+    padding-left: 20px
+    font-size: 1.55em
+    border-left: 2px solid #aadafa;
+
+    &:hover
+      &:before
+        border-color: var(--pseudo-hover)
+
+    &:before
+      position: absolute
+      top: calc(((100% - 36px) / 2))
+      left: -8px
+      z-index: 1
+      width: w = 8px
+      height: h = w
+      border: .5 * w solid $light-blue
+      border-radius: w
+      background: var(--card-bg)
+      content: ''
+      line-height: h
+      transition: all .2s ease-in-out
+
+    &:after
+      position: absolute
+      bottom: 0
+      left: 0
+      z-index: 0
+      width: 2px
+      height: 1.5em
+      // background: lighten($light-blue, 20)
+      content: ''
+
+    a
+      margin-right: 10px

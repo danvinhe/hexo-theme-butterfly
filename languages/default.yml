@@ -12,6 +12,7 @@ page:
   tag: Tag
   category: Category
   archives: Archives
+  subcategory: Subcategory
 
 card_post_count: comments
 
