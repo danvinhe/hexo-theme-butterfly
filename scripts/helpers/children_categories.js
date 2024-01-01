@@ -10,10 +10,10 @@ hexo.extend.helper.register('children_categories', function () {
   if (!this.is_category()) return "not page of category"
 
   const pagePath = this.page.path
-  this.log('children_categories: pagePath =', pagePath)
+  hexo.log.debug('children_categories: pagePath =', pagePath)
   const categories = this.site.categories
   if (!categories || !categories.length) return 'categories is empty'
-  this.log('children_categories: categories.length =',categories.length)
+  hexo.log.debug('children_categories: categories.length =',categories.length)
 
   // 根据页面路径获取当前分类
   const getCurrent = function () {
@@ -27,7 +27,7 @@ hexo.extend.helper.register('children_categories', function () {
     return current
   }
   const current = getCurrent()
-  this.log('children_categories: current =', current)
+  hexo.log.debug('children_categories: current =', current)
   if (!current) return  "current categories is empty"
 
   // 获取所有子级分类
